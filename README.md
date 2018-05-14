@@ -1,3 +1,3 @@
 # hass4scratchLab
 
-基于 `home-assistant==0.67`
+基于 `homeassistant==0.69.1`

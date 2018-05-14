@@ -70,8 +70,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
                 hass.components.persistent_notification.async_create(
                     log_msg, title='Xiaomi Miio Remote')
                 # emit a event
-                hass.bus.fire('my_cool_event', { 'answer': 42 }) # Q: 未
-                生效,使用persistent_notification也够
+                hass.bus.fire('my_cool_event', { 'answer': 42 }) # Q: 未生效,使用persistent_notification也够
                 print("test fire event")
                 return
 ```

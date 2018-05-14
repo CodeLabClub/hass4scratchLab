@@ -47,12 +47,17 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
         for _ in range(num_repeats):
             for payload in command:
                 # command: dynamic_conmand # wwj
+                if ir_data_scratch:
+                        print("ir_data_scratch:",ir_data_scratch)
+                        self._send_command(ir_data_scratch)
+                '''
                 if payload in self._commands:
                     self._send_command(ir_data_scratch)
                     # for local_payload in self._commands[payload][CONF_COMMAND]:
                         # import IPython;IPython.embed()
                         # print("local_payload:", local_payload)
                         # self._send_command(local_payload)
+                '''
                 else:
                     self._send_command(payload)
                 time.sleep(delay)
@@ -65,7 +70,8 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
             _LOGGER.debug("Message received from device: '%s'", message)
 
             if 'code' in message and message['code']:
-                log_msg = "Received command is: {}".format(message['code'])
+                # log_msg = "Received command is: {}".format(message['code'])
+                log_msg = message['code']
                 _LOGGER.info(log_msg)
                 hass.components.persistent_notification.async_create(
                     log_msg, title='Xiaomi Miio Remote')

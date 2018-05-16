@@ -45,22 +45,22 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
         delay = kwargs.get(ATTR_DELAY_SECS, DEFAULT_DELAY_SECS)
         ir_data_scratch = kwargs.get("ir_data_scratch")
         for _ in range(num_repeats):
-            for payload in command:
-                # command: dynamic_conmand # wwj
-                if ir_data_scratch:
+            if ir_data_scratch:
                         print("ir_data_scratch:",ir_data_scratch)
                         self._send_command(ir_data_scratch)
-                '''
+            '''
+            for payload in command:
+                # command: dynamic_conmand # wwj
                 if payload in self._commands:
                     self._send_command(ir_data_scratch)
                     # for local_payload in self._commands[payload][CONF_COMMAND]:
                         # import IPython;IPython.embed()
                         # print("local_payload:", local_payload)
                         # self._send_command(local_payload)
-                '''
                 else:
                     self._send_command(payload)
                 time.sleep(delay)
+            '''
 ```
 
 ```python
